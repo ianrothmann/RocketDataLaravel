@@ -1,0 +1,21 @@
+{
+    "name": "ianrothmann/rocket-data-laravel",
+    "description": "A Laravel data provider for Rocket data components",
+	"type": "library",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "Ian Rothmann",
+            "email": "ian@conceptsphere.com"
+        }
+    ],
+    "require": {
+		"php": ">=5.4.0",
+        "laravel/framework": "5.4.*"
+	},
+	"autoload": {
+        "psr-4": {
+            "IanRothmann\\RocketDataLaravel\\": "src/"
+        }
+    }
+}
