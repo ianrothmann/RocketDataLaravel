@@ -211,9 +211,9 @@ class ManipulationHandler
     public function update($data){
         try{
             DB::beginTransaction();
-            $this->executeBeforeUpdate($data);
             $relMeta=$this->reflectRelationships();
             $model=$this->getModel($data[$this->reflector->getPrimaryKey()]);
+            $this->executeBeforeUpdate($data,$model);
             $this->transferAttributes($this->definition->getFieldSet(),$model,$data);
             $this->transferAllRelationFields($this->definition->getFieldSet(),$model,$data,$relMeta);
 
