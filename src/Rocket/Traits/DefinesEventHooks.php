@@ -98,10 +98,10 @@ trait DefinesEventHooks
         return $this;
     }
 
-    protected function executeBeforeUpdate($data){
+    protected function executeBeforeUpdate(&$data){
         if(array_key_exists('beforeUpdate',$this->hooks)&&is_callable($this->hooks['beforeUpdate'])){
             $func=$this->hooks['beforeUpdate'];
-            $data=$func($data);
+            $func($data);
         }
         return $data;
     }
@@ -114,10 +114,10 @@ trait DefinesEventHooks
         return $data;
     }
 
-    protected function executeBeforeCreate($data){
+    protected function executeBeforeCreate(&$data,&$model){
         if(array_key_exists('beforeCreate',$this->hooks)&&is_callable($this->hooks['beforeCreate'])){
             $func=$this->hooks['beforeCreate'];
-            $data=$func($data);
+            $func($data,$model);
         }
         return $data;
     }

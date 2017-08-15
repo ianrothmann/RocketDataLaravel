@@ -146,11 +146,10 @@ class ManipulationHandler
 
         try{
             DB::beginTransaction();
-            $data=$this->executeBeforeCreate($data);
             $relMeta=$this->reflectRelationships();
             $modelClass=$this->definition->getClassName();
             $model=new $modelClass;
-
+            $this->executeBeforeCreate($data, $model);
             $this->transferAttributes($this->definition->getFieldSet(),$model,$data);
             $this->transferParentRelationFields($this->definition->getFieldSet(),$model,$data,$relMeta);
 
@@ -172,7 +171,6 @@ class ManipulationHandler
                 }
 
             }
-
             $model->save();
 
             $relMeta=$this->reflectRelationships();
@@ -213,7 +211,7 @@ class ManipulationHandler
     public function update($data){
         try{
             DB::beginTransaction();
-            $data=$this->executeBeforeUpdate($data);
+            $this->executeBeforeUpdate($data);
             $relMeta=$this->reflectRelationships();
             $model=$this->getModel($data[$this->reflector->getPrimaryKey()]);
             $this->transferAttributes($this->definition->getFieldSet(),$model,$data);
