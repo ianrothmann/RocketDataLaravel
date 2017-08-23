@@ -28,10 +28,15 @@ class RocketField
     const TYPE_CURRENCY='currency';
     const TYPE_SELECT='select';
     const TYPE_MULTISELECT='multiselect';
+    const TYPE_LOCATION='location';
 
 
     public static function text($fieldName,$label){
         return new RocketTextField($fieldName,$label);
+    }
+
+    public static function location($fieldName,$label){
+        return new RocketLocationField($fieldName,$label);
     }
 
     public static function bool($fieldName, $label, $trueValue='Yes', $falseValue='No'){

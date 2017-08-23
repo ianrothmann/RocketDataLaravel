@@ -20,6 +20,7 @@ use IanRothmann\RocketDataLaravel\Rocket\Types\RocketFileField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketFilesField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketImageField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketImagesField;
+use IanRothmann\RocketDataLaravel\Rocket\Types\RocketLocationField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketLongTextField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketMultiSelectField;
 use IanRothmann\RocketDataLaravel\Rocket\Types\RocketNumberField;
@@ -114,6 +115,15 @@ class RocketFieldSet
      */
     public function number($fieldName, $label){
         return $this->addField(new RocketNumberField($fieldName,$label));
+    }
+
+    /**
+     * @param $fieldName
+     * @param $label
+     * @return RocketLocationField
+     */
+    public function location($fieldName, $label='Location',$centerLat=null,$centerLong=null){
+        return $this->addField(new RocketLocationField($fieldName,$label,$centerLat,$centerLong));
     }
 
     /**
