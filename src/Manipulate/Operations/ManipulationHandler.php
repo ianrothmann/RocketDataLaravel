@@ -213,6 +213,7 @@ class ManipulationHandler
             DB::beginTransaction();
             $relMeta=$this->reflectRelationships();
             $model=$this->getModel($data[$this->reflector->getPrimaryKey()]);
+            $original_model=clone $model;
             $this->executeBeforeUpdate($data,$model);
             $this->transferAttributes($this->definition->getFieldSet(),$model,$data);
             $this->transferAllRelationFields($this->definition->getFieldSet(),$model,$data,$relMeta);
@@ -254,7 +255,7 @@ class ManipulationHandler
             }
 
             $model->save();
-            $this->executeAfterUpdate($model);
+            $this->executeAfterUpdate($model,$original_model);
             DB::commit();
             $id=$this->reflector->getPrimaryKey();
             return $this->get($model->$id);

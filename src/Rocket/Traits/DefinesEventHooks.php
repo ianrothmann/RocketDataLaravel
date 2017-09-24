@@ -106,12 +106,12 @@ trait DefinesEventHooks
         return $data;
     }
 
-    protected function executeAfterUpdate($data){
+    protected function executeAfterUpdate($model,$original_model){
         if(array_key_exists('afterUpdate',$this->hooks)&&is_callable($this->hooks['afterUpdate'])){
             $func=$this->hooks['afterUpdate'];
-            $data=$func($data);
+            $model=$func($model,$original_model);
         }
-        return $data;
+        return $model;
     }
 
     protected function executeBeforeCreate(&$data,&$model){
