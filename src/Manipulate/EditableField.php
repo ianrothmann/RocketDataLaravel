@@ -117,6 +117,8 @@ class EditableField extends Field
             $this->valueIdFieldName=>$id,
             $this->valueDescriptorFieldName=>$text,
         ];
+
+        return $this;
     }
 
     /**
