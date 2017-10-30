@@ -9,6 +9,7 @@
 namespace IanRothmann\RocketDataLaravel\Rocket\Types;
 
 
+use IanRothmann\RocketDataLaravel\Display\Query\FieldFilter;
 use IanRothmann\RocketDataLaravel\Manipulate\Relations\BelongsToField;
 
 
@@ -20,6 +21,9 @@ class RocketSelectField extends BelongsToField
     {
         parent::__construct($relationshipName, RocketField::TYPE_SELECT, $label);
         $this->loadValues=true;
+        $this->addDisplayQueryOperator(FieldFilter::CONTAINS); //TODO: THis should not be here
+        $this->addDisplayQueryOperator(FieldFilter::STARTSWITH);
+        $this->addDisplayQueryOperator(FieldFilter::ENDSWITH);
     }
 
 
