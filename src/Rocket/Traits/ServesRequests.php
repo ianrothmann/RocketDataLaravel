@@ -30,6 +30,8 @@ trait ServesRequests
             return $this->serveDisplayDefinition($request);
         }else if($request->has('command')&&$request->get('command')=='upload'){
             return $this->serveFileUpload($request);
+        }else if($request->has('command')&&$request->get('command')=='download'){
+            return $this->serveFileDownload($request);
         }else if($request->has('command')&&$request->get('command')=='validate') {
             return $this->serveServerSideValidation($request);
         }else if($request->has('formType')&&$request->get('formType')=='add'){
@@ -122,6 +124,10 @@ trait ServesRequests
         return $result;
     }
 
+    public function serveFileDownload(Request $request){
+        return RocketUpload::handleDownload($request->fileid);
+    }
+
     public function serveFileUpload(Request $request){
 
         $fieldId=$request->get('uploader');
@@ -156,6 +162,11 @@ trait ServesRequests
 
             if($disk)
                 $handler->disk($disk);
+
+            if($field->isPrivateFile())
+                $handler->privateFile();
+            else
+                $handler->publicFile();
 
             return $handler->handle();
         }else{

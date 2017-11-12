@@ -18,7 +18,7 @@ class EditableField extends Field
 {
     use ValidatesField;
 
-    protected $isOptional=false, $isReadOnly=false, $validators=[], $values=[], $valueQuery, $loadValues=false;
+    protected $isOptional=false, $isReadOnly=false, $isFilePrivate=false, $validators=[], $values=[], $valueQuery, $loadValues=false;
     protected $canAdd=true, $canEdit=true;
     protected $namePrefix, $fieldId;
     protected $valueIdFieldName, $valueDescriptorFieldName;
@@ -252,6 +252,28 @@ class EditableField extends Field
     {
         $this->isOptional = $isOptional;
         return $this;
+    }
+
+    /**
+     * @return EditableField
+     */
+    public function privateFile()
+    {
+        $this->isFilePrivate=true;
+        return $this;
+    }
+
+    /**
+     * @return EditableField
+     */
+    public function publicFile()
+    {
+        $this->isFilePrivate=false;
+        return $this;
+    }
+
+    public function isPrivateFile(){
+        return $this->isFilePrivate;
     }
 
     /**
