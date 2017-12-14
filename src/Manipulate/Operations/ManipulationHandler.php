@@ -111,7 +111,8 @@ class ManipulationHandler
          */
         foreach ($fieldSet->getRelationFields() as $field){
             $relationshipName=$field->getFieldName();
-            $this->handleRelationshipLinking($model,$data[$field->getFieldId()],$relationshipName,$relMeta[$relationshipName],$field);
+            $val=array_key_exists($field->getFieldId(),$data)?$data[$field->getFieldId()]:null;
+            $this->handleRelationshipLinking($model,$val,$relationshipName,$relMeta[$relationshipName],$field);
         }
     }
 
