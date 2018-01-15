@@ -80,7 +80,7 @@ class QueryHandler
 
     //TODO: Replace Fixed Filter Listr Values Optionally
     private function postProcessing($queryResult){
-       if(get_class($this->definition->getValueModifierClosure())=='Closure'){
+       if($this->definition->getValueModifierClosure()!=null&&get_class($this->definition->getValueModifierClosure())=='Closure'){
             $definition=$this->definition;
             $queryResult->map($definition->getValueModifierClosure());
         }

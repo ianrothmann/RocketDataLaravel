@@ -33,8 +33,11 @@ class DisplayDefinition implements \JsonSerializable
      */
     public function setQuery($query)
     {
-        $this->query = $query;
-        $this->queryObjectType=get_class($query);
+        if($query!=null){
+            $this->query = $query;
+            $this->queryObjectType=get_class($query);
+        }
+
         return $this;
     }
 
