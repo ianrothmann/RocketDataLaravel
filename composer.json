@@ -2,7 +2,7 @@
     "name": "ianrothmann/rocket-data-laravel",
     "description": "A Laravel data provider for Rocket data components",
 	"type": "library",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Ian Rothmann",
