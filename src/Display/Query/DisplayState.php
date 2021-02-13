@@ -10,9 +10,10 @@ namespace IanRothmann\RocketDataLaravel\Display\Query;
 
 
 use IanRothmann\RocketDataLaravel\Display\DisplayDefinition;
-use IanRothmann\RocketDataLaravel\FilterField;
-use IanRothmann\RocketDataLaravel\FilterGroup;
-use IanRothmann\RocketDataLaravel\OrderByField;
+use IanRothmann\RocketDataLaravel\Display\Query\State\FilterField;
+use IanRothmann\RocketDataLaravel\Display\Query\State\FilterGroup;
+use IanRothmann\RocketDataLaravel\Display\Query\State\OrderByField;
+
 
 class DisplayState
 {

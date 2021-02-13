@@ -9,7 +9,7 @@
 namespace IanRothmann\RocketDataLaravel\Display\Query;
 
 
-use IanRothmann\RocketDataLaravel\OrderByField;
+use IanRothmann\RocketDataLaravel\Display\Query\State\OrderByField;
 
 class QueryResult implements \JsonSerializable
 {

@@ -6,7 +6,7 @@
  * Time: 6:00 AM
  */
 
-namespace IanRothmann\RocketDataLaravel;
+namespace IanRothmann\RocketDataLaravel\Display\Query\State;
 
 
 use IanRothmann\RocketDataLaravel\Traits\JsonToString;
